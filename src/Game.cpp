@@ -1,6 +1,10 @@
 #include "Game.h"
 
-Game::Game() {}
+Game::Game() {
+  this->isRunning = false;
+  this->window = nullptr;
+  this->renderer = nullptr;
+}
 
 Game::~Game() {}
 

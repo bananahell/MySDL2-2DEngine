@@ -102,9 +102,12 @@ clean:
 	-$(RMDIR) $(BIN_PATH)
 	-$(RM) $(EXEC)
 
+execute:
+	./$(EXEC)
+
 ##### Call for cppcheck
 cppcheck:
-	cppcheck --enable=all . -I./include --suppress=missingIncludeSystem
+	cppcheck --enable=all . -I./include --suppress=missingInclude
 
 ##### Call for valgrind coverage
 valgrind:
