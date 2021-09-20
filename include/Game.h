@@ -18,7 +18,7 @@ class Game {
   void init(const char *, int, int, int, int, bool);
   /**
    * Waits and checks for events triggered by SDL2.
-   * - SDL_QUIT
+   * SDL_QUIT - User-requested quit
    */
   void handleEvents();
   void update();
