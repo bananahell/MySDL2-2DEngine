@@ -17,7 +17,7 @@ LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lm
 INC_PATHS = -I$(INC_PATH) $(addprefix -I,$(SDL_INC_PATH))
 
 ##### Compile directives
-FLAGS = -std=c++17 -Wall -pedantic -Wextra -Werror=init-self
+FLAGS = -std=c++17 -Wall -pedantic -Wextra -Werror=init-self -O3 -mtune=native
 
 INC_PATH = include
 SRC_PATH = src
@@ -31,7 +31,7 @@ FILE_NAMES = $(CPP_FILES:.cpp=) $(INC_FILES:.h=)
 DEP_FILES = $(addprefix $(DEP_PATH)/,$(addsuffix .d,$(FILE_NAMES)))
 OBJ_FILES = $(addprefix $(BIN_PATH)/,$(notdir $(CPP_FILES:.cpp=.o)))
 
-.PHONY: release debug cppcheck clean folders help
+.PHONY: cppcheck clean folders help
 
 ##### Generates object files
 all: $(OBJ_FILES)
@@ -52,7 +52,7 @@ clean:
 
 ##### Call for cppcheck
 cppcheck:
-	cppcheck --enable=all . -I./include --suppress=missingInclude
+	cppcheck --enable=all . -I./include --suppress=missingInclude --suppress=unusedFunction
 
 folders:
 	@mkdir -p $(DEP_PATH) $(BIN_PATH) $(INC_PATH) $(SRC_PATH)
@@ -62,8 +62,6 @@ print-% : ; @echo $* = $($*)
 
 help:
 	@echo Available commands
-	@echo - release:  Builds release version
-	@echo - debug:    Builds debug version
 	@echo - clean:    Cleans generated files
 	@echo - cppcheck: Uses cppcheck on compiled objects
 	@echo - help:     Shows help
