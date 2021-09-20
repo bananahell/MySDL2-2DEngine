@@ -11,7 +11,7 @@ It basically just compiles using either ```make debug``` or ```make release``` (
 A "does it all" command suggestion:  
 ```make clean && make debug && make cppcheck && make execute```  
 
-#### ./(lib, include and src)
+### ./(lib, include and src)
 
 My makefile's organization (follow it (ง'̀-'́)ง):  
 
@@ -22,7 +22,7 @@ My makefile's organization (follow it (ง'̀-'́)ง):
 
 ### ./README.md
 
-Always updated (I wish), in its beatifull markdown format. watchout for trailing whitespaces!!!  
+Always updated (I wish), in its beatifull markdown format. Watchout for trailing whitespaces!!!  
 
 ## Style
 
