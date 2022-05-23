@@ -1,13 +1,12 @@
-#include <iostream>
-
 #include "SDL2/SDL.h"
 
-class Game {
+class Engine {
  public:
-  Game();
-  ~Game();
+  Engine();
+  ~Engine();
   /**
-   * It starts the whole game, creating a window and a renderer and setting the isRunning flag.
+   * It starts the whole engine, creating a window and a renderer and setting
+   * the isRunning flag.
    * @param title Window's name that shows on its top.
    * @param xPos Window's position in the screen - X axis.
    * @param yPos Window's position in the screen - Y axis.
@@ -21,7 +20,7 @@ class Game {
    * SDL_QUIT - User-requested quit
    */
   void handleEvents();
-  void update();
+  virtual void update() = 0;
   /**
    * Handles what is shown in the screen.
    */
@@ -33,7 +32,9 @@ class Game {
   /**
    * @return Whether the game is running.
    */
-  bool running() { return isRunning; }
+  bool running() {
+    return isRunning;
+  }
 
  private:
   bool isRunning;

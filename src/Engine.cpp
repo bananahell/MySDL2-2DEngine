@@ -1,28 +1,29 @@
-#include "Game.h"
+#include "Engine.h"
 
-Game::Game() {
+Engine::Engine() {
   this->isRunning = false;
   this->window = nullptr;
   this->renderer = nullptr;
 }
 
-Game::~Game() {}
+Engine::~Engine() {}
 
-void Game::init(const char* title, int xPos, int yPos, int width, int height, bool fullscreen) {
+void Engine::init(const char* title, int xPos, int yPos, int width, int height,
+                  bool fullscreen) {
   int flags = 0;
   if (fullscreen) {
     flags = SDL_WINDOW_FULLSCREEN;
   }
   if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
-    std::cout << "SDL initialized!!" << std::endl;
+    printf("SDL initialized!!\n");
     this->window = SDL_CreateWindow(title, xPos, yPos, width, height, flags);
     if (this->window) {
-      std::cout << "Window created!!" << std::endl;
+      printf("Window created!!\n");
     }
     this->renderer = SDL_CreateRenderer(this->window, -1, 0);
     if (this->renderer) {
-      SDL_SetRenderDrawColor(this->renderer, 255, 255, 0, 255);
-      std::cout << "Renderer created!!" << std::endl;
+      SDL_SetRenderDrawColor(this->renderer, 0, 0, 0, 0);
+      printf("Renderer created!!\n");
     }
     this->isRunning = true;
   } else {
@@ -30,9 +31,10 @@ void Game::init(const char* title, int xPos, int yPos, int width, int height, bo
   }
 }
 
-void Game::handleEvents() {
+void Engine::handleEvents() {
   SDL_Event event;
   SDL_PollEvent(&event);
+  printf("Entered handleEvents\n");
   switch (event.type) {
     case SDL_QUIT:
       this->isRunning = false;
@@ -42,16 +44,14 @@ void Game::handleEvents() {
   }
 }
 
-void Game::update() {}
-
-void Game::render() {
+void Engine::render() {
   SDL_RenderClear(this->renderer);
   SDL_RenderPresent(this->renderer);
 }
 
-void Game::clean() {
+void Engine::clean() {
   SDL_DestroyWindow(this->window);
   SDL_DestroyRenderer(this->renderer);
   SDL_Quit();
-  std::cout << "Game cleaned!!" << std::endl;
+  printf("Engine cleaned!!\n");
 }
