@@ -3,8 +3,7 @@
     {
       "name": "Linux",
       "includePath": [
-        "${workspaceFolder}/**",
-        "../SDL2-2DGameEngineTester/**"
+        "${workspaceFolder}/code/include"
       ],
       "defines": [],
       "compilerPath": "/usr/bin/gcc",

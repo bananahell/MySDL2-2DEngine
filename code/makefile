@@ -14,10 +14,14 @@ DEP_FLAGS = -M -MT $@ -MT $(BIN_PATH)/$(*F).o -MP -MF $@
 ##### Linked libraries
 LIBS = -lSDL2 -lSDL2_image -lSDL2_mixer -lSDL2_ttf -lm
 ##### Include path
-INC_PATHS = -I$(INC_PATH) $(addprefix -I,$(SDL_INC_PATH))
+INC_PATHS = -I$(INC_PATH)
 
 ##### Compile directives
-FLAGS = -std=c++17 -Wall -pedantic -Wextra -Werror=init-self -O3 -mtune=native
+FLAGS = -std=c++17 -Wall -pedantic -Wextra -Werror=init-self
+##### Extra debugging directives
+DFLAGS = -ggdb -O0 -DDEBUG
+##### Extra release directives
+RFLAGS = -O3 -mtune=native
 
 INC_PATH = include
 SRC_PATH = src
@@ -52,7 +56,7 @@ clean:
 
 ##### Call for cppcheck
 cppcheck:
-	cppcheck --enable=all . -I./include --suppress=missingInclude --suppress=unusedFunction
+	cppcheck --enable=all . -I$(INC_PATH) --suppress=missingInclude --suppress=unusedFunction
 
 folders:
 	@mkdir -p $(DEP_PATH) $(BIN_PATH) $(INC_PATH) $(SRC_PATH)
@@ -61,6 +65,8 @@ folders:
 print-% : ; @echo $* = $($*)
 
 help:
+	@echo This project is not meant to be ran by itself! Make a game with it!
+	@echo
 	@echo Available commands
 	@echo - clean:    Cleans generated files
 	@echo - cppcheck: Uses cppcheck on compiled objects
