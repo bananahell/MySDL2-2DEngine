@@ -4,19 +4,23 @@
 
 using namespace std;
 
-Sprite::Sprite() {
+Sprite::Sprite(GameObject& parent) : Component(parent) {
   this->texture = nullptr;
   this->width = 0;
   this->height = 0;
 }
 
-Sprite::Sprite(string fileName) {
+Sprite::Sprite(GameObject& parent, string fileName) : Component(parent) {
   this->texture = nullptr;
   this->open(fileName);
+  this->parent.box.width = this->width;
+  this->parent.box.height = this->height;
 }
 
 Sprite::~Sprite() {
-  SDL_DestroyTexture(this->texture);
+  if (this->texture != nullptr) {
+    SDL_DestroyTexture(this->texture);
+  }
 }
 
 void Sprite::open(string fileName) {
@@ -43,10 +47,10 @@ void Sprite::setClip(int posX, int posY, int width, int height) {
   this->clipRect.h = height;
 }
 
-void Sprite::render(int posX, int posY) {
+void Sprite::render() {
   SDL_Rect dstRect;
-  dstRect.x = posX;
-  dstRect.y = posY;
+  dstRect.x = this->parent.box.posX;
+  dstRect.y = this->parent.box.posY;
   dstRect.w = this->clipRect.w;
   dstRect.h = this->clipRect.h;
   if (SDL_RenderCopy(Engine::engineInstance->renderer, this->texture, &clipRect,
@@ -54,4 +58,10 @@ void Sprite::render(int posX, int posY) {
     SDL_Log("Unable to initialize render copy: %s", SDL_GetError());
     exit(EXIT_FAILURE);
   }
+}
+
+void Sprite::update() {}
+
+bool Sprite::isType(string type) {
+  return type.compare(SPRITE_TYPE) == 0;
 }

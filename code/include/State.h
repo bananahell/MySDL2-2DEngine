@@ -3,6 +3,10 @@
 
 #include <SDL2/SDL.h>
 
+#include <memory>
+#include <vector>
+
+#include "GameObject.h"
 #include "Music.h"
 #include "Sprite.h"
 
@@ -14,6 +18,7 @@
 class State {
  public:
   bool isRunning;  // Flag that continues the game loop.
+  std::vector<std::unique_ptr<GameObject>> objectVector;
 
   /**
    * Default destructor.
@@ -38,6 +43,8 @@ class State {
    * SDL_QUIT - User-requested quit
    */
   virtual void handleEvents();
+  virtual void keyDownKeyboard(SDL_Event);
+  virtual void mouseButtonDown();
 
   /**
    * Main state loop. While isRunning - handleEvents(), update() and render().

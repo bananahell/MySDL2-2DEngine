@@ -5,7 +5,9 @@
 
 #include <string>
 
-class Sprite {
+#include "Component.h"
+
+class Sprite : public Component {
  public:
   SDL_Texture* texture;  // SDL texture of the sprite.
   int width;             // Sprite's width.
@@ -15,12 +17,12 @@ class Sprite {
   /**
    * Default constructor. Just starts as nullptr.
    */
-  Sprite();
+  explicit Sprite(GameObject&);
   /**
    * Constructor that already opens the image passed.
    * @param fileName Name of the file with its directory.
    */
-  explicit Sprite(std::string);
+  explicit Sprite(GameObject&, std::string);
   /**
    * Destroys the texture of the sprite.
    */
@@ -40,10 +42,10 @@ class Sprite {
   void setClip(int, int, int, int);
   /**
    * Adds the sprite to the list of items the renderer needs to show.
-   * @param posX Horizontal position of the rectangle's upper left corner.
-   * @param posY Vertical position of the rectangle's upper left corner.
    */
-  void render(int, int);
+  void render();
+  void update();
+  bool isType(std::string);
 };
 
 #endif  // SPRITE
