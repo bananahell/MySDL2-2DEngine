@@ -24,7 +24,7 @@ class Music {
    * Opens the song passed.
    * @param fileName Name of the file with its directory.
    */
-  void open(std::string);
+  void open(const std::string&);
   /**
    * Plays music in the game, specially for background music.
    * @param times Number of times music is played (PLAY_FOREVER for forever).

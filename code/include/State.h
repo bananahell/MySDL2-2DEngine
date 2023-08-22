@@ -17,7 +17,7 @@
  */
 class State {
  public:
-  bool isRunning;  // Flag that continues the game loop.
+  bool quitRequested;  // Flag that continues the game loop.
   std::vector<std::unique_ptr<GameObject>> objectVector;
 
   /**

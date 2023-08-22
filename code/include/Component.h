@@ -17,7 +17,7 @@ class Component {
 
   virtual void update() = 0;
   virtual void render() = 0;
-  virtual bool isType(std::string) = 0;
+  virtual bool isType(const std::string&) = 0;
 };
 
 #endif  // COMPONENT

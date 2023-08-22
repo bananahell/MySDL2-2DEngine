@@ -28,7 +28,7 @@ void GameObject::addComponent(Component* component) {
   this->components.emplace_back(component);
 }
 
-void GameObject::removeComponent(Component* component) {
+void GameObject::removeComponent(const Component* component) {
   bool notFound = true;
   for (unsigned i = 0; i < this->components.size(); i++) {
     if (this->components.at(i).get() == component) {
@@ -42,7 +42,7 @@ void GameObject::removeComponent(Component* component) {
   }
 }
 
-Component* GameObject::getComponent(string type) {
+Component* GameObject::getComponent(const string& type) {
   for (int i = this->components.size() - 1; i >= 0; i--) {
     if (this->components.at(i)->isType(type)) {
       return this->components.at(i).get();

@@ -34,8 +34,8 @@ void Engine::initEngine(const char* title, int xPos, int yPos, int width,
     exit(EXIT_FAILURE);
   }
   // Initializes music and sound handling functions
-  if (Mix_Init(MIX_INIT_FLAC | MIX_INIT_OGG | MIX_INIT_FLUIDSYNTH |
-               MIX_INIT_MP3 | MIX_INIT_MOD | MIX_INIT_MODPLUG) == 0) {
+  if (Mix_Init(MIX_INIT_FLAC | MIX_INIT_OGG | MIX_INIT_MID | MIX_INIT_MP3 |
+               MIX_INIT_MOD | MIX_INIT_OPUS) == 0) {
     SDL_Log("Unable to initialize MIX: %s", SDL_GetError());
     exit(EXIT_FAILURE);
   }

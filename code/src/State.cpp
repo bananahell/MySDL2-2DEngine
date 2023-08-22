@@ -7,7 +7,7 @@
 State::~State() {}
 
 void State::stateLoop() {
-  while (this->isRunning == true) {
+  while (this->quitRequested == false) {
     this->handleEvents();
     this->update();
     this->render();
@@ -26,12 +26,14 @@ void State::handleEvents() {
   SDL_PollEvent(&event);
   switch (event.type) {
     case SDL_QUIT:
-      this->isRunning = false;
+      this->quitRequested = true;
       break;
     case SDL_KEYDOWN:
       keyDownKeyboard(event);
+      break;
     case SDL_MOUSEBUTTONDOWN:
       mouseButtonDown();
+      break;
     default:
       break;
   }
@@ -40,7 +42,7 @@ void State::handleEvents() {
 void State::keyDownKeyboard(SDL_Event event) {
   switch (event.key.keysym.sym) {
     case SDLK_ESCAPE:
-      this->isRunning = false;
+      this->quitRequested = true;
       break;
     default:
       break;

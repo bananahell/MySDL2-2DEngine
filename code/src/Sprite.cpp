@@ -10,7 +10,7 @@ Sprite::Sprite(GameObject& parent) : Component(parent) {
   this->height = 0;
 }
 
-Sprite::Sprite(GameObject& parent, string fileName) : Component(parent) {
+Sprite::Sprite(GameObject& parent, const string& fileName) : Component(parent) {
   this->texture = nullptr;
   this->open(fileName);
   this->parent.box.width = this->width;
@@ -23,7 +23,7 @@ Sprite::~Sprite() {
   }
 }
 
-void Sprite::open(string fileName) {
+void Sprite::open(const string& fileName) {
   if (this->texture != nullptr) {
     SDL_DestroyTexture(this->texture);
   }
@@ -62,6 +62,6 @@ void Sprite::render() {
 
 void Sprite::update() {}
 
-bool Sprite::isType(string type) {
+bool Sprite::isType(const string& type) {
   return type.compare(SPRITE_TYPE) == 0;
 }

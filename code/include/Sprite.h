@@ -22,7 +22,7 @@ class Sprite : public Component {
    * Constructor that already opens the image passed.
    * @param fileName Name of the file with its directory.
    */
-  explicit Sprite(GameObject&, std::string);
+  explicit Sprite(GameObject&, const std::string&);
   /**
    * Destroys the texture of the sprite.
    */
@@ -31,7 +31,7 @@ class Sprite : public Component {
    * Opens the image passed.
    * @param fileName Name of the file with its directory.
    */
-  void open(std::string);
+  void open(const std::string&);
   /**
    * Sets the dimensions of the rectangle in relation to the sprite's image.
    * @param posX Horizontal position of the rectangle's upper left corner.
@@ -43,9 +43,9 @@ class Sprite : public Component {
   /**
    * Adds the sprite to the list of items the renderer needs to show.
    */
-  void render();
-  void update();
-  bool isType(std::string);
+  void render() override;
+  void update() override;
+  bool isType(const std::string&) override;
 };
 
 #endif  // SPRITE

@@ -18,6 +18,6 @@ void Music::stop(int msToStop) {
   Mix_FadeOutMusic(msToStop);
 }
 
-void Music::open(string fileName) {
+void Music::open(const string& fileName) {
   this->music = Mix_LoadMUS(fileName.c_str());
 }

@@ -20,8 +20,8 @@ class GameObject {
   void update();
   void render();
   void addComponent(Component*);
-  void removeComponent(Component*);
-  Component* getComponent(std::string);
+  void removeComponent(const Component*);
+  Component* getComponent(const std::string&);
 };
 
 #endif  // GAMEOBJECT
