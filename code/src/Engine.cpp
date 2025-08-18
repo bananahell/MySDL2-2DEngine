@@ -17,9 +17,7 @@ Engine::Engine() {
   this->state = nullptr;
 }
 
-Engine::~Engine() {
-  this->clean();
-}
+Engine::~Engine() { this->clean(); }
 
 void Engine::initEngine(const char* title, int xPos, int yPos, int width,
                         int height, bool fullscreen) {

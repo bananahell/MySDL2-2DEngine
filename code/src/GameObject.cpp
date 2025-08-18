@@ -4,13 +4,9 @@
 
 using namespace std;
 
-GameObject::GameObject() : box(Rect()) {
-  this->isAlive = true;
-}
+GameObject::GameObject() : box(Rect()) { this->isAlive = true; }
 
-GameObject::~GameObject() {
-  this->components.clear();
-}
+GameObject::~GameObject() { this->components.clear(); }
 
 void GameObject::update() {
   for (int i = this->components.size() - 1; i >= 0; i--) {

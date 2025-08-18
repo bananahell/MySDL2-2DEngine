@@ -60,14 +60,8 @@ bool Rect::contains(Vec2 position) {
           (position.posY > posY) && (position.posY < posY + height));
 }
 
-Vec2 Rect::getPos() {
-  return Vec2(posX, posY);
-}
+Vec2 Rect::getPos() { return Vec2(posX, posY); }
 
-Vec2 Rect::getSize() {
-  return Vec2(width, height);
-}
+Vec2 Rect::getSize() { return Vec2(width, height); }
 
-Vec2 Rect::getCenter() {
-  return Vec2(posX + (width / 2), posY + (height / 2));
-}
+Vec2 Rect::getCenter() { return Vec2(posX + (width / 2), posY + (height / 2)); }
