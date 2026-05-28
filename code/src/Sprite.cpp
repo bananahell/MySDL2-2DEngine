@@ -30,11 +30,11 @@ void Sprite::open(const string& fileName) {
   this->texture =
       IMG_LoadTexture(Engine::engineInstance->renderer, fileName.c_str());
   if (this->texture == nullptr) {
-    SDL_Log("Unable to initialize texture: %s", SDL_GetError());
+    SDL_Log("[ERR] Unable to initialize texture: %s", SDL_GetError());
     exit(EXIT_FAILURE);
   }
   if (SDL_QueryTexture(this->texture, nullptr, nullptr, &width, &height) != 0) {
-    SDL_Log("Unable to initialize query texture: %s", SDL_GetError());
+    SDL_Log("[ERR] Unable to initialize query texture: %s", SDL_GetError());
     exit(EXIT_FAILURE);
   }
   setClip(0, 0, this->width, this->height);
@@ -55,7 +55,7 @@ void Sprite::render() {
   dstRect.h = this->clipRect.h;
   if (SDL_RenderCopy(Engine::engineInstance->renderer, this->texture, &clipRect,
                      &dstRect) != 0) {
-    SDL_Log("Unable to initialize render copy: %s", SDL_GetError());
+    SDL_Log("[ERR] Unable to initialize render copy: %s", SDL_GetError());
     exit(EXIT_FAILURE);
   }
 }

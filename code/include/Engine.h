@@ -16,10 +16,10 @@
  */
 class Engine {
  public:
-  static Engine *engineInstance;  // "this" engine, accessed from anywhere
-  SDL_Window *window;             // The window of the engine itself.
-  SDL_Renderer *renderer;  // Whatever that needs to be rendered to the screen.
-  State *state;            // The current state/phase of the game.
+  static Engine* engineInstance;  // "this" engine, accessed from anywhere
+  SDL_Window* window;             // The window of the engine itself.
+  SDL_Renderer* renderer;  // Whatever that needs to be rendered to the screen.
+  State* state;            // The current state/phase of the game.
 
   /**
    * Default constructor, initializes all as nullptr.
@@ -49,7 +49,7 @@ class Engine {
    * @param height Window's height.
    * @param fullscreen Whether the game will be fullscreen.
    */
-  void initEngine(const char *, int, int, int, int, bool);
+  void initEngine(const char*, int, int, int, int, bool);
   /**
    * Destroys the audio mix, the images, the renderer, the window, and quits the
    * game.

@@ -1,5 +1,7 @@
 #include "GameObject.h"
 
+#include <iostream>
+
 #include "Component.h"
 
 using namespace std;
@@ -34,7 +36,7 @@ void GameObject::removeComponent(const Component* component) {
     }
   }
   if (notFound) {
-    printf("The component to be removed could not be found.\n");
+    cout << "[ERR] The component to be removed could not be found." << endl;
   }
 }
 
