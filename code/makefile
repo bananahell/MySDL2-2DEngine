@@ -56,7 +56,7 @@ clean:
 
 ##### Call for cppcheck
 cppcheck:
-	cppcheck --enable=all . -I$(INC_PATH) --suppress=missingInclude --suppress=unusedFunction
+	cppcheck --enable=all . -I$(INC_PATH) --suppress=missingIncludeSystem --suppress=unusedFunction --suppress=checkersReport
 
 folders:
 	@mkdir -p $(DEP_PATH) $(BIN_PATH) $(INC_PATH) $(SRC_PATH)
