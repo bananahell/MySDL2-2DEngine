@@ -19,7 +19,7 @@ class Music {
    * Constructor that already opens the song passed.
    * @param fileName Name of the file with its directory.
    */
-  explicit Music(std::string);
+  explicit Music(const std::string&);
   /**
    * Opens the song passed.
    * @param fileName Name of the file with its directory.

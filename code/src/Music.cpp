@@ -4,7 +4,7 @@ using namespace std;
 
 Music::Music() { Music::music = nullptr; }
 
-Music::Music(string fileName) { Music::open(fileName); }
+Music::Music(const string& fileName) { Music::open(fileName); }
 
 void Music::play(int times) { Mix_PlayMusic(this->music, times); }
 
