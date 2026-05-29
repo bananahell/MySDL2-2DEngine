@@ -7,31 +7,43 @@
 
 #include "Component.h"
 
+/**
+ * A component used for showing a game object's visuals.
+ * @author Pedro Nogueira
+ */
 class Sprite : public Component {
  public:
   SDL_Texture* texture;  // SDL texture of the sprite.
-  int width;             // Sprite's width.
-  int height;            // Sprite's height.
-  SDL_Rect clipRect;     // SDL rectangle containing the sprite.
+
+  int width;  // Sprite's width.
+
+  int height;  // Sprite's height.
+
+  SDL_Rect clipRect;  // SDL rectangle containing the sprite.
 
   /**
    * Default constructor. Just starts as nullptr.
    */
   explicit Sprite(GameObject&);
+
   /**
    * Constructor that already opens the image passed.
+   * @param parent GameObject containing it.
    * @param fileName Name of the file with its directory.
    */
   explicit Sprite(GameObject&, const std::string&);
+
   /**
    * Destroys the texture of the sprite.
    */
   ~Sprite();
+
   /**
    * Opens the image passed.
    * @param fileName Name of the file with its directory.
    */
   void open(const std::string&);
+
   /**
    * Sets the dimensions of the rectangle in relation to the sprite's image.
    * @param posX Horizontal position of the rectangle's upper left corner.
@@ -40,11 +52,28 @@ class Sprite : public Component {
    * @param height Rectangle's height.
    */
   void setClip(int, int, int, int);
+
   /**
-   * Adds the sprite to the list of items the renderer needs to show.
+   * `[OVERRIDE]` Adds the sprite to the list of items to render.
    */
   void render() override;
+
+  /**
+   * `[OVERRIDE]` Updates sprite.
+   */
   void update() override;
+
+  /**
+   * `[OVERRIDE]` Gets the `SPRITE` type.
+   * @return The `SPRITE` type.
+   */
+  std::string getType() override;
+
+  /**
+   * `[OVERRIDE]` Compares input param with `SPRITE` type.
+   * @param type Input type to compare with `SPRITE`.
+   * @return Whether the type input is really `SPRITE`.
+   */
   bool isType(const std::string&) override;
 };
 

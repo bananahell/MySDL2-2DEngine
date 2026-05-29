@@ -18,36 +18,49 @@
 class State {
  public:
   bool quitRequested;  // Flag that continues the game loop.
-  std::vector<std::unique_ptr<GameObject>> objectVector;
+
+  std::vector<std::unique_ptr<GameObject>> objectVector;  // Game objects here.
 
   /**
    * Default constructor.
    */
   State();
+
   /**
-   * Default destructor.
+   * `[VIRTUAL]` Default destructor.
    */
   virtual ~State();
+
   /**
-   * Initializes the state in specific, like sprites and sounds.
+   * `[PURE VIRTUAL]` Initializes the state, with sprites and sounds.
    */
   virtual void initState() = 0;
+
   /**
-   * Main game logic of this specific state.
+   * `[PURE VIRTUAL]` Main game logic of this specific state.
    */
   virtual void update() = 0;
 
   /**
-   * Handles what is shown in the screen.
+   * `[VIRTUAL]` Handles what is shown in the screen.
    */
   virtual void render();
+
   /**
-   * Waits and checks for events triggered by SDL2. Has default.
-   * SDL_QUIT - User-requested quit
+   * `[VIRTUAL]` Handling of player input.
    */
   virtual void handleEvents();
-  virtual void keyDownKeyboard(SDL_Event);
-  virtual void mouseButtonDown();
+
+  /**
+   * Handling of player keyboard press.
+   * @param event Used to specify which key was pressed.
+   */
+  void keyDownKeyboard(SDL_Event);
+
+  /**
+   * Handling of player mouse press.
+   */
+  void mouseButtonDown();
 
   /**
    * Main state loop. While isRunning - handleEvents(), update() and render().

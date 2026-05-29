@@ -67,10 +67,6 @@ float Vec2::getAngle(Vec2 pos) {
   return atan2(getDiffY(pos.posY), getDiffX(pos.posX)) * (180 / M_PI);
 }
 
-float Vec2::cos(float angle) { return std::cos(angle * M_PI / 180); }
-
-float Vec2::sin(float angle) { return std::sin(angle * M_PI / 180); }
-
 Vec2 Vec2::project(float dist, float angle) {
   return Vec2(cos(angle) * dist, sin(angle) * dist);
 }

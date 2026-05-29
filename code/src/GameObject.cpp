@@ -41,6 +41,13 @@ void GameObject::removeComponent(const Component* component) {
   }
 }
 
+void GameObject::requestDelete() {
+  for (int i = this->components.size() - 1; i >= 0; i--) {
+    this->components[i].get()->~Component();
+  }
+  this->isAlive = false;
+}
+
 Component* GameObject::getComponent(const string& type) {
   for (int i = this->components.size() - 1; i >= 0; i--) {
     if (this->components.at(i)->isType(type)) {

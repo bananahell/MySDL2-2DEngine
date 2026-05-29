@@ -62,6 +62,8 @@ void Sprite::render() {
 
 void Sprite::update() {}
 
+string Sprite::getType() { return SPRITE_TYPE; }
+
 bool Sprite::isType(const string& type) {
   return type.compare(SPRITE_TYPE) == 0;
 }

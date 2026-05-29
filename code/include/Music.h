@@ -7,29 +7,37 @@
 
 #define PLAY_FOREVER -1
 
+/**
+ * The game's way of handling music.
+ * @author Pedro Nogueira
+ */
 class Music {
  public:
-  Mix_Music* music;  // SDL mix music component
+  Mix_Music* music;  // SDL mix music component.
 
   /**
    * Default constructor. Just starts as nullptr.
    */
   Music();
+
   /**
    * Constructor that already opens the song passed.
    * @param fileName Name of the file with its directory.
    */
   explicit Music(const std::string&);
+
   /**
    * Opens the song passed.
    * @param fileName Name of the file with its directory.
    */
   void open(const std::string&);
+
   /**
    * Plays music in the game, specially for background music.
    * @param times Number of times music is played (PLAY_FOREVER for forever).
    */
   void play(int);
+
   /**
    * Stops the currently playing music.
    * @param msToStop Time in miliseconds until the music stops.
