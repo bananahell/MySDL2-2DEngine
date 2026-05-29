@@ -1,6 +1,9 @@
 #ifndef VEC2
 #define VEC2
 
+#define DEGREE_TO_RADIAN 180 / 3.14159265358979323846
+#define RADIAN_TO_DEGREE 3.14159265358979323846 / 180
+
 /**
  * Game's way of calculating 2D vector distances, scalings and rotations.
  * @author Pedro Nogueira
@@ -132,6 +135,20 @@ class Vec2 {
    * @return Resulting angle in radians.
    */
   float getAngle(Vec2);
+
+  /**
+   * Degree to radian converter.
+   * @param angleIn Angle value in degrees.
+   * @return Given angle in radians.
+   */
+  static float degreeToRadian(float);
+
+  /**
+   * Radian to degree converter.
+   * @param angleIn Angle value in radians.
+   * @return Given angle in degrees.
+   */
+  static float radianToDegree(float);
 
   /**
    * Project a vector using a distance and an angle in radians.

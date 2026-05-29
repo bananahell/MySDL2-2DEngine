@@ -67,6 +67,10 @@ float Vec2::getAngle(Vec2 pos) {
   return atan2(getDiffY(pos.posY), getDiffX(pos.posX)) * (180 / M_PI);
 }
 
+float Vec2::degreeToRadian(float angleIn) { return angleIn * DEGREE_TO_RADIAN; }
+
+float Vec2::radianToDegree(float angleIn) { return angleIn * RADIAN_TO_DEGREE; }
+
 Vec2 Vec2::project(float dist, float angle) {
   return Vec2(cos(angle) * dist, sin(angle) * dist);
 }
