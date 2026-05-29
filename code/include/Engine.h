@@ -20,6 +20,8 @@ class Engine {
   SDL_Window* window;             // The window of the engine itself.
   SDL_Renderer* renderer;  // Whatever that needs to be rendered to the screen.
   State* state;            // The current state/phase of the game.
+  int framerate = 33;      // FPS
+  bool quitRequested;
 
   /**
    * Default constructor, initializes all as nullptr.
@@ -34,12 +36,12 @@ class Engine {
    * Initializes the game in specific, like its states and flags.
    */
   virtual void initGame() = 0;
+
   /**
    * Runs the game in specific. Put your states logic here, and don't forget to
    * clean in the end.
    */
-  virtual void run() = 0;
-
+  virtual void run();
   /**
    * Initializes SDL, the window, and the renderer.
    * @param title Window's name that shows on its top.
@@ -48,8 +50,9 @@ class Engine {
    * @param width Window's width.
    * @param height Window's height.
    * @param fullscreen Whether the game will be fullscreen.
+   * @param framerate Starting FPS config.
    */
-  void initEngine(const char*, int, int, int, int, bool);
+  void initEngine(const char*, int, int, int, int, bool, int);
   /**
    * Destroys the audio mix, the images, the renderer, the window, and quits the
    * game.

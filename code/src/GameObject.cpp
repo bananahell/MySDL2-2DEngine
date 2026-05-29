@@ -37,6 +37,7 @@ void GameObject::removeComponent(const Component* component) {
   }
   if (notFound) {
     cout << "[ERR] The component to be removed could not be found." << endl;
+    exit(EXIT_FAILURE);
   }
 }
 

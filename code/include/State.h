@@ -21,6 +21,10 @@ class State {
   std::vector<std::unique_ptr<GameObject>> objectVector;
 
   /**
+   * Default constructor.
+   */
+  State();
+  /**
    * Default destructor.
    */
   virtual ~State();
@@ -32,12 +36,11 @@ class State {
    * Main game logic of this specific state.
    */
   virtual void update() = 0;
+
   /**
    * Handles what is shown in the screen.
-   * @param renderer Engine's renderer, passed all the way up from the game.
    */
-  virtual void render() = 0;
-
+  virtual void render();
   /**
    * Waits and checks for events triggered by SDL2. Has default.
    * SDL_QUIT - User-requested quit
@@ -48,7 +51,6 @@ class State {
 
   /**
    * Main state loop. While isRunning - handleEvents(), update() and render().
-   * @param renderer Engine's renderer, passed all the way up from the game.
    */
   void stateLoop();
 };

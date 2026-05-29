@@ -19,12 +19,13 @@ Engine::Engine() {
   this->window = nullptr;
   this->renderer = nullptr;
   this->state = nullptr;
+  this->quitRequested = false;
 }
 
 Engine::~Engine() { this->clean(); }
 
 void Engine::initEngine(const char* title, int xPos, int yPos, int width,
-                        int height, bool fullscreen) {
+                        int height, bool fullscreen, int framerate) {
   // Initializes main SDL functions
   if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER) != 0) {
     SDL_Log("[ERR] Unable to initialize SDL: %s", SDL_GetError());
@@ -47,7 +48,7 @@ void Engine::initEngine(const char* title, int xPos, int yPos, int width,
     SDL_Log("[ERR] Unable to initialize OpenAudio: %s", SDL_GetError());
     exit(EXIT_FAILURE);
   }
-  Mix_AllocateChannels(32);
+  Mix_AllocateChannels(-1);
 
   // Window creation
   this->window = SDL_CreateWindow(title, xPos, yPos, width, height, fullscreen);
@@ -63,6 +64,14 @@ void Engine::initEngine(const char* title, int xPos, int yPos, int width,
     SDL_Log("[ERR] Renderer is null: %s", SDL_GetError());
     exit(EXIT_FAILURE);
   }
+
+  this->framerate = framerate;
+}
+
+void Engine::run() {
+  this->state->initState();
+  this->state->stateLoop();
+  this->clean();
 }
 
 void Engine::clean() {

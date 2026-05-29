@@ -4,6 +4,8 @@
 
 #include "Engine.h"
 
+State::State() { this->quitRequested = false; }
+
 State::~State() {}
 
 void State::stateLoop() {
@@ -12,9 +14,15 @@ void State::stateLoop() {
     this->update();
     this->render();
     SDL_RenderPresent(Engine::engineInstance->renderer);
-    SDL_Delay(33);
+    SDL_Delay(Engine::engineInstance->framerate);
   }
   delete this;
+}
+
+void State::render() {
+  for (unsigned i = 0; i < State::objectVector.size(); i++) {
+    State::objectVector.at(i).get()->render();
+  }
 }
 
 void State::handleEvents() {
