@@ -34,18 +34,18 @@ class Engine {
   Engine();
 
   /**
-   * Default destructor, simply calls Engine::clean().
+   * Default destructor, simply calls `Engine::clean()`.
    */
   ~Engine();
 
   /**
-   * `[PURE VIRTUAL]` Initializes the game in specific, like its states and
+   * Initializes the game in specific, like its states and
    * flags.
    */
   virtual void initGame() = 0;
 
   /**
-   * `[VIRTUAL]` Runs the game in specific. Put your states logic here, and
+   * Runs the game in specific. Put your states logic here, and
    * don't forget to clean in the end.
    */
   virtual void run();

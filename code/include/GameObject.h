@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "Rect.h"
+#include "State.h"
 
 class Component;
 
@@ -20,6 +21,8 @@ class GameObject {
   std::vector<std::unique_ptr<Component>> components;  // Components in object.
 
   bool isAlive;  // Whether if game object should die.
+
+  State* parent = nullptr;
 
   /**
    * Default constructor.

@@ -27,27 +27,40 @@ class State {
   State();
 
   /**
-   * `[VIRTUAL]` Default destructor.
+   * Default destructor.
    */
   virtual ~State();
 
+    /**
+     * Add a new game object to this state's `objectVector`.
+     * @param gameObject `GameObject` to be added.
+     */
+    virtual void addGameObject(GameObject*);
+
   /**
-   * `[PURE VIRTUAL]` Initializes the state, with sprites and sounds.
+   * Looks for game object inside state's `objectVector`.
+   * @param gameObject `GameObject` to be looked for.
+   * @return Whether it found the game object in `objectVector`.
+   */
+    virtual bool findGameObject(GameObject*);
+
+  /**
+   * Initializes the state, with sprites and sounds.
    */
   virtual void initState() = 0;
 
   /**
-   * `[PURE VIRTUAL]` Main game logic of this specific state.
+   * Main game logic of this specific state.
    */
   virtual void update() = 0;
 
   /**
-   * `[VIRTUAL]` Handles what is shown in the screen.
+   * Handles what is shown in the screen.
    */
   virtual void render();
 
   /**
-   * `[VIRTUAL]` Handling of player input.
+   * Handling of player input.
    */
   virtual void handleEvents();
 

@@ -2,7 +2,11 @@
 
 #include <SDL2/SDL.h>
 
+#include <iostream>
+
 #include "Engine.h"
+
+using namespace std;
 
 State::State() { this->quitRequested = false; }
 
@@ -20,9 +24,37 @@ void State::stateLoop() {
 }
 
 void State::render() {
-  for (unsigned i = 0; i < State::objectVector.size(); i++) {
-    State::objectVector.at(i).get()->render();
+  for (unsigned i = 0; i < this->objectVector.size(); i++) {
+    this->objectVector.at(i).get()->render();
   }
+}
+
+void State::addGameObject(GameObject* gameObject) {
+  if (gameObject == nullptr) {
+    cout << "[ERR] Tried to add null game object to state!" << endl;
+    exit(EXIT_FAILURE);
+  }
+  if (gameObject->parent != nullptr) {
+    cout << "[ERR] Tried adding to state a game object already with parent!"
+         << endl;
+    exit(EXIT_FAILURE);
+  }
+  if (this->findGameObject(gameObject)) {
+    cout << "[ERR] Tried adding game object to state that already had it!"
+         << endl;
+    exit(EXIT_FAILURE);
+  }
+  this->objectVector.emplace_back(gameObject);
+  gameObject->parent = this;
+}
+
+bool State::findGameObject(GameObject* gameObjectIn) {
+  for (unique_ptr<GameObject>& gameObject : this->objectVector) {
+    if (gameObject.get() == gameObjectIn) {
+      return true;
+    }
+  }
+  return false;
 }
 
 void State::handleEvents() {

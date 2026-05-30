@@ -2,9 +2,9 @@
 
 using namespace std;
 
-Music::Music() { Music::music = nullptr; }
+Music::Music() { this->music = nullptr; }
 
-Music::Music(const string& fileName) { Music::open(fileName); }
+Music::Music(const string& fileName) { this->open(fileName); }
 
 void Music::play(int times) { Mix_PlayMusic(this->music, times); }
 

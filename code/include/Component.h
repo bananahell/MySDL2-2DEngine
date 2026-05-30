@@ -22,28 +22,28 @@ class Component {
   explicit Component(GameObject&);
 
   /**
-   * `[VIRTUAL]` Default destructor.
+   * Default destructor.
    */
   virtual ~Component();
 
   /**
-   * `[VIRTUAL]` Renders visual component.
+   * Renders visual component.
    */
   virtual void render();
 
   /**
-   * `[PURE VIRTUAL]` Logic runner of the component.
+   * Logic runner of the component.
    */
   virtual void update() = 0;
 
   /**
-   * `[PURE VIRTUAL]` Gets class type that implements this component.
+   * Gets class type that implements this component.
    * @return Class type of this component.
    */
   virtual std::string getType() = 0;
 
   /**
-   * `[PURE VIRTUAL]` Compares class type that implements this component.
+   * Compares class type that implements this component.
    * @param type Type to be compared with this component's own type.
    * @return Whether component types match.
    */

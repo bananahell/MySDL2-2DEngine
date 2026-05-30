@@ -6,7 +6,7 @@
 
 using namespace std;
 
-GameObject::GameObject() : box(Rect()) { this->isAlive = true; }
+GameObject::GameObject() : box(Rect()), parent(nullptr) { this->isAlive = true; }
 
 GameObject::~GameObject() { this->components.clear(); }
 

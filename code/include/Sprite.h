@@ -54,23 +54,23 @@ class Sprite : public Component {
   void setClip(int, int, int, int);
 
   /**
-   * `[OVERRIDE]` Adds the sprite to the list of items to render.
+   * Adds the sprite to the list of items to render.
    */
   void render() override;
 
   /**
-   * `[OVERRIDE]` Updates sprite.
+   * Updates sprite.
    */
   void update() override;
 
   /**
-   * `[OVERRIDE]` Gets the `SPRITE` type.
+   * Gets the `SPRITE` type.
    * @return The `SPRITE` type.
    */
   std::string getType() override;
 
   /**
-   * `[OVERRIDE]` Compares input param with `SPRITE` type.
+   * Compares input param with `SPRITE` type.
    * @param type Input type to compare with `SPRITE`.
    * @return Whether the type input is really `SPRITE`.
    */

@@ -3,13 +3,13 @@
 #include <cmath>
 
 Vec2::Vec2() {
-  Vec2::posX = 0;
-  Vec2::posY = 0;
+  this->posX = 0;
+  this->posY = 0;
 }
 
 Vec2::Vec2(float posX, float posY) {
-  Vec2::posX = posX;
-  Vec2::posY = posY;
+  this->posX = posX;
+  this->posY = posY;
 }
 
 Vec2::~Vec2() {}
