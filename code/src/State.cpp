@@ -2,6 +2,7 @@
 
 #include <SDL2/SDL.h>
 
+#include <algorithm>
 #include <iostream>
 
 #include "Engine.h"
@@ -49,12 +50,10 @@ void State::addGameObject(GameObject* gameObject) {
 }
 
 bool State::findGameObject(GameObject* gameObjectIn) {
-  for (unique_ptr<GameObject>& gameObject : this->objectVector) {
-    if (gameObject.get() == gameObjectIn) {
-      return true;
-    }
-  }
-  return false;
+  return any_of(this->objectVector.begin(), this->objectVector.end(),
+                [gameObjectIn](const unique_ptr<GameObject>& gameObject) {
+                  return gameObject.get() == gameObjectIn;
+                });
 }
 
 void State::handleEvents() {

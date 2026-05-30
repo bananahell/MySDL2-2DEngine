@@ -6,9 +6,9 @@
 #include <vector>
 
 #include "Rect.h"
-#include "State.h"
 
 class Component;
+class State;
 
 /**
  * What exists inside a game's state, being the stuff that act in the game.
